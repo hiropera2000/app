@@ -1,0 +1,16 @@
+<%= @exp %>
+
+<br><br>
+<% @exp_ret.to_hash.each{|output| %>
+<%=  output["plan_table_output"] %><br>
+<% } %>
+
+<br><br>
+<%= p @result %>
+
+
+<br><br>
+
+<%= p @result.to_hash %>
+
+

@@ -1,0 +1,42 @@
+<%= form_tag('/submit', :method => :post) do %>
+  <div><%= text_area :query, :content, :size => "60x20" %></div>
+  <%= submit_tag "作成" %>
+<% end %>
+
+<% if @exec_query.present? %>
+実行したクエリ<br>
+<%= @exec_query %>
+<% end %>
+
+<% if @exp.present? %>
+<br><br>
+<table>
+<% @exp_ret.to_hash.each{|output| %>
+<% if /^Plan hash / =~ output["plan_table_output"]%>
+<tr><td colspan="6">
+<%= raw(output["plan_table_output"]) %>
+</td></tr>
+<% elsif /^----/ !~ output["plan_table_output"] %>
+<tr><td>
+<%= raw(output["plan_table_output"].gsub(/\|/,"</td><td>")) %>
+</td></tr>
+<% end %>
+<% } %>
+</table>
+<br><br>
+<tr>
+<table border>
+<% @result.to_hash[0].each_key do |k| %>
+<th witdh="60"><%= k %></th>
+<% end %>
+</tr>
+<% @result.to_hash.each do |r| %>
+<tr>
+<% r.each_value do |v| %>
+<td><%= v %></td>
+<% end %>
+</tr>
+<% end %>
+</table>
+<% end %>
+<% render :partial => "show", :locals => { :exp => @exp, :exp_ret => @exp_ret, :result => @result } %>
