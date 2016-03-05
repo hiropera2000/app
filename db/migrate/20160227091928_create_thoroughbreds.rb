@@ -22,10 +22,10 @@ class CreateThoroughbreds < ActiveRecord::Migration
       t.integer :left       ,null: false, :default => '2'
       t.integer :condition  ,null: false, :default => '2'
       t.integer :uphill     ,null: false, :default => '2'
-      t.integer :line1_id   ,:default => nil
-      t.integer :line2_id   ,:default => nil
-      t.integer :line3_id   ,:default => nil
-      t.integer :line4_id   ,:default => nil
+      t.integer :sireline1_id   ,:default => nil
+      t.integer :sireline2_id   ,:default => nil
+      t.integer :sireline3_id   ,:default => nil
+      t.integer :sireline4_id   ,:default => nil
       t.integer :deft       ,:default => nil
       t.integer :power      ,:default => nil
       t.integer :explosion  ,:default => nil

@@ -33,10 +33,27 @@ CSV.foreach('db/thoroughbreds.csv') do |row|
       :sharp        => row[7],
       :guts         => row[8],
       :temper       => row[9],
-      :line1_id     => row[14],
+      :sireline1_id => row[14],
       :power        => row[10],
       :deft         => row[11],
-      :explosion    => row[12])
+      :explosion    => row[12],
+      :h_arc        => row[17],
+      :h_kj6qes     => row[18],
+      :h_bcc        => row[19],
+      :h_sharp      => row[20],
+      :h_guts       => row[21],
+      :h_herbivory  => row[22],
+      :h_power      => row[23],
+      :h_triple     => row[24],
+      :h_pantheon   => row[25],
+      :h_speed      => row[26],
+      :h_stamina    => row[27],
+      :h_elite      => row[28],
+      :h_weed       => row[29],
+      :h_dirt       => row[30],
+      :h_gold       => row[31],
+      :h_deep       => row[32]
+      )
 end
 
 AdminUser.create!(email: 'admin@example.com', password: 'password', password_confirmation: 'password')
