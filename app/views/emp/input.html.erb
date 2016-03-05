@@ -1,5 +1,9 @@
+<% render :partial => "ques", :locals => { :ques => @ques } %>
+<% if @q.present? %>
+<%= @q %>
+<% end %>
 <%= form_tag('/submit', :method => :post) do %>
-  <div><%= text_area :query, :content, :size => "60x20" %></div>
+  <div><%= text_area :query, :content, :size => "60x10" %></div>
   <%= submit_tag "作成" %>
 <% end %>
 

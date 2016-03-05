@@ -1,6 +1,27 @@
 class EmpController < ApplicationController
   def input
     # text box の表示
+    @ques = params[:id]
+
+  case @ques
+  when "1" then
+    @q = <<"EOS"
+select * from emps
+EOS
+  when "2" then
+    @q = <<"EOS"
+select * from jobs
+EOS
+  when "3" then
+    @q = <<"EOS"
+select * from sals
+EOS
+  else
+    @q = <<"EOS"
+select * from emps
+EOS
+  end
+
   end
 
   def reset
