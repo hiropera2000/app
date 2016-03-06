@@ -24,7 +24,7 @@ ActiveAdmin.register Thoroughbred do
     gender_column :gender
     column :line1_id do |thoroughbred|
       line = Line.find_by_id(thoroughbred.line1_id)
-      line.name + "Œn"
+      line.name + "ç³»"
     end
     growth_column :growth
     course_column :course
@@ -49,7 +49,7 @@ ActiveAdmin.register Thoroughbred do
         gender_row :gender
         row :line1_id do |thoroughbred|
           line = Line.find_by_id(thoroughbred.line1_id)
-          line.name + "Œn"
+          line.name + "ç³»"
         end
         growth_row :growth
         course_row :course
@@ -65,14 +65,14 @@ ActiveAdmin.register Thoroughbred do
         rank_row :explosion
       end
     end
-    panel "ƒjƒbƒNƒX" do
+    panel "ãƒ‹ãƒƒã‚¯ã‚¹" do
       attributes_table_for f do
-        # ©•ª‚ÌŒn“
+        # è‡ªåˆ†ã®ç³»çµ±
         row :line1_id do |thoroughbred|
            line = Line.find_by_id(thoroughbred.line1_id)
-           line.name + "Œn"
+           line.name + "ç³»"
         end
-        # ‘Šè‚ÌŒn“
+        # ç›¸æ‰‹ã®ç³»çµ±
         row "test" do |thoroughbred|
           nicks = Nick.where(male_id: thoroughbred.line1_id)
           nicks.each{|nick|

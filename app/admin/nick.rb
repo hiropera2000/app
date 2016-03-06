@@ -15,11 +15,11 @@ ActiveAdmin.register Nick do
 
   index do
     column :id
-    column '種牡馬', :male_id
-    column '繁殖牝馬', :female_id
-    column '種牡馬', Line.find_by_id(activerecord.attributes.nick.male_id).name
-    column '繁殖牝馬', :female_id
-    column '種牡馬', Line.find_by_id(:female_id).name
+    column '遞ｮ迚｡鬥ｬ', :male_id
+    column '郢∵ｮ也往鬥ｬ', :female_id
+    column '遞ｮ迚｡鬥ｬ', Line.find_by_id(activerecord.attributes.nick.male_id).name
+    column '郢∵ｮ也往鬥ｬ', :female_id
+    column '遞ｮ迚｡鬥ｬ', Line.find_by_id(:female_id).name
   end
 
 end
