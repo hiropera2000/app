@@ -1,5 +1,5 @@
 ActiveAdmin.register Sireline do
-
+  config.sort_order = "name_asc"
 # See permitted parameters documentation:
 # https://github.com/activeadmin/activeadmin/blob/master/docs/2-resource-customization.md#setting-up-strong-parameters
 #
@@ -19,11 +19,11 @@ ActiveAdmin.register Sireline do
 
   index do
     selectable_column
-    column :id do |line|
-      link_to line.id, admin_line_path(line)
+    column :id do |sireline|
+      link_to sireline.id, admin_sireline_path(sireline)
     end
-    column :name do |line|
-      link_to line.name, admin_line_path(line)
+    column :name do |sireline|
+      link_to sireline.name, admin_sireline_path(sireline)
     end
   end
 
