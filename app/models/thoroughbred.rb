@@ -19,37 +19,37 @@ class Thoroughbred < ActiveRecord::Base
   end
   def self.gender_text(value)
     case value
-    when 0 then "‰²"
-    when 1 then "–Ä"
+    when 0 then "ç‰¡"
+    when 1 then "ç‰"
     else
       "-"
     end
   end
   def self.growth_text(value)
     case value
-    when 0 then "Ž‘±"
-    when 1 then "‘n"
-    when 2 then "•’Ê"
-    when 3 then "”Ó¬"
+    when 0 then "æŒç¶š"
+    when 1 then "æ—©ç†Ÿ"
+    when 2 then "æ™®é€š"
+    when 3 then "æ™©æˆ"
     else
       "-"
     end
   end
   def self.course_text(value)
     case value
-    when 0 then "ŽÅ"
-    when 1 then "–œ”\"
-    when 2 then "ƒ_[ƒg"
+    when 0 then "èŠ"
+    when 1 then "ä¸‡èƒ½"
+    when 2 then "ãƒ€ãƒ¼ãƒˆ"
     else
       "-"
     end
   end
   def self.condition_text(value)
     case value
-    when 0 then "~"
-    when 1 then "¢"
-    when 2 then "›"
-    when 2 then ""
+    when 0 then "Ã—"
+    when 1 then "â–³"
+    when 2 then "â—‹"
+    when 2 then "â—Ž"
     else
       "-"
     end
