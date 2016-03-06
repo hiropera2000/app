@@ -9,14 +9,17 @@
 
 require "csv"
 
+Sireline.delete_all
 CSV.foreach('db/sirelines.csv') do |row|
    Sireline.create(:id => row[0], :name => row[1])
 end
 
+Nick.delete_all
 CSV.foreach('db/nicks.csv') do |row|
-   Nick.create(:male_line_id => row[0], :female_line_id => row[1])
+   Nick.create(:male_id => row[0], :female_id => row[1])
 end
 
+Thoroughbred.delete_all
 CSV.foreach('db/thoroughbreds.csv') do |row|
    Thoroughbred.create(
       :id           => row[0],
@@ -56,4 +59,5 @@ CSV.foreach('db/thoroughbreds.csv') do |row|
       )
 end
 
+AdminUser.delete_all
 AdminUser.create!(email: 'admin@example.com', password: 'password', password_confirmation: 'password')

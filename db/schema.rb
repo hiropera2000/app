@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20160214135414) do
+ActiveRecord::Schema.define(version: 20160227091928) do
 
   create_table "active_admin_comments", force: :cascade do |t|
     t.string   "namespace",     limit: 255
@@ -46,103 +46,72 @@ ActiveRecord::Schema.define(version: 20160214135414) do
   add_index "admin_users", ["email"], name: "index_admin_users_on_email", unique: true, using: :btree
   add_index "admin_users", ["reset_password_token"], name: "index_admin_users_on_reset_password_token", unique: true, using: :btree
 
-  create_table "depts", force: :cascade do |t|
-    t.integer  "depno",      limit: 4
-    t.string   "dname",      limit: 255
-    t.datetime "created_at",             null: false
-    t.datetime "updated_at",             null: false
-  end
-
-  create_table "emps", force: :cascade do |t|
-    t.integer  "empno",      limit: 4
-    t.string   "ename",      limit: 255
-    t.integer  "depno",      limit: 4
-    t.integer  "jobno",      limit: 4
-    t.datetime "created_at",             null: false
-    t.datetime "updated_at",             null: false
-  end
-
-  create_table "jobs", force: :cascade do |t|
-    t.integer  "jobno",      limit: 4
-    t.string   "jobname",    limit: 255
-    t.datetime "created_at",             null: false
-    t.datetime "updated_at",             null: false
-  end
-
-  create_table "lines", force: :cascade do |t|
-    t.string   "name",           limit: 255, null: false
-    t.integer  "parent_line_id", limit: 4
-    t.datetime "created_at",                 null: false
-    t.datetime "updated_at",                 null: false
-  end
-
   create_table "nicks", force: :cascade do |t|
-    t.integer  "male_line_id",   limit: 4, null: false
-    t.integer  "female_line_id", limit: 4, null: false
-    t.datetime "created_at",               null: false
-    t.datetime "updated_at",               null: false
-  end
-
-  create_table "sals", force: :cascade do |t|
-    t.integer  "empno",      limit: 4
-    t.integer  "finyear",    limit: 4
-    t.integer  "salary",     limit: 4
+    t.integer  "male_id",    limit: 4, null: false
+    t.integer  "female_id",  limit: 4, null: false
     t.datetime "created_at",           null: false
     t.datetime "updated_at",           null: false
   end
 
+  create_table "sirelines", force: :cascade do |t|
+    t.string   "name",       limit: 255, null: false
+    t.integer  "parent_id",  limit: 4
+    t.datetime "created_at",             null: false
+    t.datetime "updated_at",             null: false
+  end
+
   create_table "thoroughbreds", force: :cascade do |t|
-    t.string   "name",        limit: 255,                null: false
-    t.string   "type",        limit: 255
-    t.integer  "having",      limit: 4,   default: 0,    null: false
-    t.integer  "gender",      limit: 4,   default: 0,    null: false
-    t.integer  "rank",        limit: 4,   default: 0,    null: false
-    t.integer  "growth",      limit: 4,   default: 0,    null: false
-    t.integer  "course",      limit: 4,   default: 0,    null: false
-    t.integer  "low",         limit: 4,   default: 1000, null: false
-    t.integer  "up",          limit: 4,   default: 2000, null: false
-    t.integer  "speed",       limit: 4,   default: 0,    null: false
-    t.integer  "stamina",     limit: 4,   default: 0,    null: false
-    t.integer  "sharp",       limit: 4,   default: 0,    null: false
-    t.integer  "guts",        limit: 4,   default: 0,    null: false
-    t.integer  "temper",      limit: 4,   default: 0,    null: false
-    t.integer  "gate",        limit: 4,   default: 0,    null: false
-    t.integer  "position",    limit: 4,   default: 2,    null: false
-    t.integer  "small",       limit: 4,   default: 2,    null: false
-    t.integer  "right",       limit: 4,   default: 2,    null: false
-    t.integer  "left",        limit: 4,   default: 2,    null: false
-    t.integer  "condition",   limit: 4,   default: 2,    null: false
-    t.integer  "uphill",      limit: 4,   default: 2,    null: false
-    t.integer  "line1_id",    limit: 4
-    t.integer  "line2_id",    limit: 4
-    t.integer  "line3_id",    limit: 4
-    t.integer  "line4_id",    limit: 4
-    t.integer  "deft",        limit: 4
-    t.integer  "power",       limit: 4
-    t.integer  "explosion",   limit: 4
-    t.integer  "potential",   limit: 4
-    t.integer  "nicks",       limit: 4
-    t.integer  "linebreed",   limit: 4
-    t.integer  "h_grade1",    limit: 4
-    t.integer  "h_arc",       limit: 4
-    t.integer  "h_kj6qes",    limit: 4
-    t.integer  "h_bcc",       limit: 4
-    t.integer  "h_sharp",     limit: 4
-    t.integer  "h_guts",      limit: 4
-    t.integer  "h_herbivory", limit: 4
-    t.integer  "h_power",     limit: 4
-    t.integer  "h_triple",    limit: 4
-    t.integer  "h_pantheon",  limit: 4
-    t.integer  "h_speed",     limit: 4
-    t.integer  "h_stamina",   limit: 4
-    t.integer  "h_elite",     limit: 4
-    t.integer  "h_weed",      limit: 4
-    t.integer  "h_dirt",      limit: 4
-    t.integer  "h_gold",      limit: 4
-    t.integer  "h_deep",      limit: 4
+    t.string   "name",         limit: 255,                null: false
+    t.string   "type",         limit: 255
+    t.integer  "having",       limit: 4,   default: 0,    null: false
+    t.integer  "gender",       limit: 4,   default: 0,    null: false
+    t.integer  "rank",         limit: 4,   default: 0,    null: false
+    t.integer  "growth",       limit: 4,   default: 0,    null: false
+    t.integer  "course",       limit: 4,   default: 0,    null: false
+    t.integer  "low",          limit: 4,   default: 1000, null: false
+    t.integer  "up",           limit: 4,   default: 2000, null: false
+    t.integer  "speed",        limit: 4,   default: 0,    null: false
+    t.integer  "stamina",      limit: 4,   default: 0,    null: false
+    t.integer  "sharp",        limit: 4,   default: 0,    null: false
+    t.integer  "guts",         limit: 4,   default: 0,    null: false
+    t.integer  "temper",       limit: 4,   default: 0,    null: false
+    t.integer  "gate",         limit: 4,   default: 0,    null: false
+    t.integer  "position",     limit: 4,   default: 2,    null: false
+    t.integer  "small",        limit: 4,   default: 2,    null: false
+    t.integer  "right",        limit: 4,   default: 2,    null: false
+    t.integer  "left",         limit: 4,   default: 2,    null: false
+    t.integer  "condition",    limit: 4,   default: 2,    null: false
+    t.integer  "uphill",       limit: 4,   default: 2,    null: false
+    t.integer  "sireline1_id", limit: 4
+    t.integer  "sireline2_id", limit: 4
+    t.integer  "sireline3_id", limit: 4
+    t.integer  "sireline4_id", limit: 4
+    t.integer  "deft",         limit: 4
+    t.integer  "power",        limit: 4
+    t.integer  "explosion",    limit: 4
+    t.integer  "potential",    limit: 4
+    t.integer  "nicks",        limit: 4
+    t.integer  "linebreed",    limit: 4
+    t.integer  "h_grade1",     limit: 4
+    t.integer  "h_arc",        limit: 4
+    t.integer  "h_kj6qes",     limit: 4
+    t.integer  "h_bcc",        limit: 4
+    t.integer  "h_sharp",      limit: 4
+    t.integer  "h_guts",       limit: 4
+    t.integer  "h_herbivory",  limit: 4
+    t.integer  "h_power",      limit: 4
+    t.integer  "h_triple",     limit: 4
+    t.integer  "h_pantheon",   limit: 4
+    t.integer  "h_speed",      limit: 4
+    t.integer  "h_stamina",    limit: 4
+    t.integer  "h_elite",      limit: 4
+    t.integer  "h_weed",       limit: 4
+    t.integer  "h_dirt",       limit: 4
+    t.integer  "h_gold",       limit: 4
+    t.integer  "h_deep",       limit: 4
     t.datetime "deleted_at"
-    t.datetime "created_at",                             null: false
-    t.datetime "updated_at",                             null: false
+    t.datetime "created_at",                              null: false
+    t.datetime "updated_at",                              null: false
   end
 
 end
