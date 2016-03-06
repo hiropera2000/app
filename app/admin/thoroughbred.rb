@@ -17,7 +17,7 @@ ActiveAdmin.register Thoroughbred do
   index do
     selectable_column
     column :having
-    column :rank
+    rank_column :rank
     column :name do |thoroughbred|
       link_to thoroughbred.name, admin_thoroughbred_path(thoroughbred)
     end
