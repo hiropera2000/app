@@ -22,8 +22,8 @@ ActiveAdmin.register Thoroughbred do
       link_to thoroughbred.name, admin_thoroughbred_path(thoroughbred)
     end
     gender_column :gender
-    column :line1_id do |thoroughbred|
-      line = Line.find_by_id(thoroughbred.line1_id)
+    column :sireline1_id do |thoroughbred|
+      line = Sireline.find_by_id(thoroughbred.sireline1_id)
       line.name + "系"
     end
     growth_column :growth
@@ -47,8 +47,8 @@ ActiveAdmin.register Thoroughbred do
         row :name
         rank_row :rank
         gender_row :gender
-        row :line1_id do |thoroughbred|
-          line = Line.find_by_id(thoroughbred.line1_id)
+        row :sireline1_id do |thoroughbred|
+          line = Sireline.find_by_id(thoroughbred.sireline1_id)
           line.name + "系"
         end
         growth_row :growth
@@ -68,15 +68,15 @@ ActiveAdmin.register Thoroughbred do
     panel "ニックス" do
       attributes_table_for f do
         # 自分の系統
-        row :line1_id do |thoroughbred|
-           line = Line.find_by_id(thoroughbred.line1_id)
+        row :sireline1_id do |thoroughbred|
+           line = Sireline.find_by_id(thoroughbred.sireline1_id)
            line.name + "系"
         end
         # 相手の系統
         row "test" do |thoroughbred|
-          nicks = Nick.where(male_id: thoroughbred.line1_id)
+          nicks = Nick.where(male_id: thoroughbred.sireline1_id)
           nicks.each{|nick|
-            l = Line.find(nick.female_id)
+            l = Sireline.find(nick.female_id)
             attributes_table_for l do
               row :name
             end if l.present?

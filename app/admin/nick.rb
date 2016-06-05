@@ -1,5 +1,8 @@
 ActiveAdmin.register Nick do
   config.sort_order = "male_id_asc"
+  #filter :male_id, as: :select
+  #filter :female_id, as: :select
+
 # See permitted parameters documentation:
 # https://github.com/activeadmin/activeadmin/blob/master/docs/2-resource-customization.md#setting-up-strong-parameters
 #
@@ -16,10 +19,13 @@ ActiveAdmin.register Nick do
   index do
     column :id
     column '種牡馬', :male_id
+    column '種牡馬', :male_id do |s|
+      Sireline.find_by_id(s.male_id).try(:name)
+    end
     column '繁殖牝馬', :female_id
-    column '種牡馬', Sireline.find_by_id(activerecord.attributes.nick.male_id).name
-    column '繁殖牝馬', :female_id
-    column '種牡馬', Sireline.find_by_id(:female_id).name
+    column '繁殖牝馬', :femail_id do |s|
+      Sireline.find_by_id(s.female_id).try(:name)
+    end
   end
 
 end
