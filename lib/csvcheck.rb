@@ -1,10 +1,8 @@
 require 'csv'
 
-class Nick < ActiveRecord::Base
-   belongs_to :male_line,   class_name: "Sireline", foreign_key: "male_id"
-   belongs_to :female_line, class_name: "Sireline", foreign_key: "female_id"
+module CsvConverter
 
-  def self.export
+  def export
     CSV.generate do |csv|
       csv_column_names = %w(id male_id femail_id)
       csv << csv_column_names
