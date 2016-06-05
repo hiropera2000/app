@@ -260,3 +260,63 @@ ActiveAdmin.setup do |config|
   #
   # config.filters = true
 end
+
+module ActiveAdmin
+  module Views
+    class TableFor
+      def growth_column(attribute)
+        column(attribute){ |model|
+          Thoroughbred.growth_text(model[attribute])
+        }
+      end
+      def rank_column(attribute)
+        column(attribute){ |model|
+          Thoroughbred.rank_text(model[attribute])
+        }
+      end
+      def course_column(attribute)
+        column(attribute){ |model|
+          Thoroughbred.course_text(model[attribute])
+        }
+      end
+      def condition_column(attribute)
+        column(attribute){ |model|
+          Thoroughbred.condition_text(model[attribute])
+        }
+      end
+      def gender_column(attribute)
+        column(attribute){ |model|
+          Thoroughbred.gender_text(model[attribute])
+        }
+      end
+    end
+
+    class AttributesTable
+      def growth_row(attribute)
+        row(attribute){ |model|
+          Thoroughbred.growth_text(model[attribute])
+        }
+      end
+      def rank_row(attribute)
+        row(attribute){ |model|
+          Thoroughbred.rank_text(model[attribute])
+        }
+      end
+      def course_row(attribute)
+        row(attribute){ |model|
+          Thoroughbred.course_text(model[attribute])
+        }
+      end
+      def condition_row(attribute)
+        row(attribute){ |model|
+          Thoroughbred.condition_text(model[attribute])
+        }
+      end
+      def gender_row(attribute)
+        row(attribute){ |model|
+          Thoroughbred.gender_text(model[attribute])
+        }
+      end
+    end
+  end
+end
